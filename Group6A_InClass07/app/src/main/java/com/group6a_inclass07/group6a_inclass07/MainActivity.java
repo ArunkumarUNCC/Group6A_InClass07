@@ -54,12 +54,4 @@ public class MainActivity extends AppCompatActivity implements GetListAsync.IGet
 
 //        fFeedsAdapter = new FeedsAdapter(this,R.layout.list_view_row,feeds);
     }
-
-    public void showFavoritesOnClick(View aView){
-
-    }
-
-    public void showAllOnClick(View aView){
-
-    }
 }
