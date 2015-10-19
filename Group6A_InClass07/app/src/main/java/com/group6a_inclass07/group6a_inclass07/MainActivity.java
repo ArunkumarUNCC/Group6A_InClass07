@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -52,5 +53,13 @@ public class MainActivity extends AppCompatActivity implements GetListAsync.IGet
 //        Log.d("Check ITunes",feeds.toString());
 
 //        fFeedsAdapter = new FeedsAdapter(this,R.layout.list_view_row,feeds);
+    }
+
+    public void showFavoritesOnClick(View aView){
+
+    }
+
+    public void showAllOnClick(View aView){
+
     }
 }
