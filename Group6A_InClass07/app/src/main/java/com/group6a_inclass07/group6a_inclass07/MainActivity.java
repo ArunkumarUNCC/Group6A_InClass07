@@ -59,4 +59,6 @@ public class MainActivity extends AppCompatActivity implements GetListAsync.IGet
         fITunesList.setAdapter(fFeedsAdapter);
         fFeedsAdapter.setNotifyOnChange(true);
     }
+
+
 }
