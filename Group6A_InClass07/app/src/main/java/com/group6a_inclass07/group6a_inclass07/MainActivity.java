@@ -1,5 +1,5 @@
 package com.group6a_inclass07.group6a_inclass07;
-
+//Michael Vituli - Arunkumar Bagavathi
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
