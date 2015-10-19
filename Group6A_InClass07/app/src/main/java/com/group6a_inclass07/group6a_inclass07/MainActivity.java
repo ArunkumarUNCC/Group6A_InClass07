@@ -60,11 +60,5 @@ public class MainActivity extends AppCompatActivity implements GetListAsync.IGet
         fFeedsAdapter.setNotifyOnChange(true);
     }
 
-    public void showFavoritesOnClick(View aView){
 
-    }
-
-    public void showAllOnClick(View aView){
-
-    }
 }
