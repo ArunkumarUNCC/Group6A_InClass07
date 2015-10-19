@@ -3,6 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <item android:id="@+id/show_favorites" android:title="@string/show_favorites"
     android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/show_all" android:title="@string/show_all" 
+    <item android:id="@+id/show_all" android:title="@string/show_all"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>

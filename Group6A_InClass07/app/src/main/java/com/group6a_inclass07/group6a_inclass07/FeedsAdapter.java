@@ -63,6 +63,6 @@ public class FeedsAdapter extends ArrayAdapter<ITunes>{
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageViewIcon);
         Picasso.with(fContext).load(apps.getAppImage()[0]).resize(100,100).into(imageView);
 
-        return super.getView(position, convertView, parent);
+        return convertView;
     }
 }
