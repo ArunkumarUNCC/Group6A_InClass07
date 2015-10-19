@@ -2,15 +2,27 @@ package com.group6a_inclass07.group6a_inclass07;
 //Michael Vituli - Arunkumar Bagavathi
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity implements GetListAsync.IGetFeeds{
+
+    final String APPSLINKS = "http://itunes.apple.com/us/rss/topgrossingapplications/limit=25/json";
+
+    ListView fITunesList;
+    static FeedsAdapter fFeedsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        fITunesList = (ListView) findViewById(R.id.listViewITunes);
+        new GetListAsync(this).execute(APPSLINKS);
     }
 
     @Override
@@ -33,5 +45,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void putList(ArrayList<ITunes> feeds) {
+//        Log.d("Check ITunes",feeds.toString());
+
+//        fFeedsAdapter = new FeedsAdapter(this,R.layout.list_view_row,feeds);
     }
 }
