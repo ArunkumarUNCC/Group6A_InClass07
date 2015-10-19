@@ -8,4 +8,5 @@
     <string name="releaseDate">Release Date</string>
     <string name="price">Price</string>
     <string name="category">Category</string>
+    <string name="title_activity_preview">Preview Activity</string>
 </resources>
