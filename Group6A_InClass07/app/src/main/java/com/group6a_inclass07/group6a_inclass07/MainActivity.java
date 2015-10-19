@@ -1,5 +1,6 @@
 package com.group6a_inclass07.group6a_inclass07;
 //Michael Vituli - Arunkumar Bagavathi
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,11 @@ public class MainActivity extends AppCompatActivity implements GetListAsync.IGet
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //displaying app icon
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.mipmap.inclass07_icon);
 
         fITunesList = (ListView) findViewById(R.id.listViewITunes);
         new GetListAsync(this).execute(APPSLINKS);

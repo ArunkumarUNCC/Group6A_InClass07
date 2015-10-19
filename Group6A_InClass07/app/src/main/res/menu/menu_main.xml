@@ -1,8 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/show_favorites" android:title="@string/show_favorites"
-    android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/show_all" android:title="@string/show_all"
+
+    <group android:id="@+id/MenuItems">
+        <item android:id="@+id/show_favorites" android:title="@string/show_favorites"
+
         android:orderInCategory="100" app:showAsAction="never" />
+        <item android:id="@+id/show_all" android:title="@string/show_all"
+            android:orderInCategory="100" app:showAsAction="never" /></group>
 </menu>
