@@ -1,5 +1,6 @@
 package com.group6a_inclass07.group6a_inclass07;
 //Michael Vituli - Arunkumar Bagavathi
+import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements GetListAsync.IGetFeeds{
 
     final String APPSLINKS = "http://itunes.apple.com/us/rss/topgrossingapplications/limit=25/json";
+    final static String fPREVIEW_ACTIVTY = "android.intent.action.PLAY_ACTIVITY";
+    final static String fITUNE_ITEM = "Itune Item";
     ListView fITunesList;
     static FeedsAdapter fFeedsAdapter;
 
@@ -98,6 +101,12 @@ public class MainActivity extends AppCompatActivity implements GetListAsync.IGet
                 return false;
             }
         });
+        fITunesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(feeds.get(position));
+            }
+        });
     }
 
     public void showFavoritesOnClick(MenuItem aItem){
@@ -108,6 +117,12 @@ public class MainActivity extends AppCompatActivity implements GetListAsync.IGet
         fFeedsAdapter = new FeedsAdapter(this,R.layout.list_view_row,fList);
         fITunesList.setAdapter(fFeedsAdapter);
         fFeedsAdapter.setNotifyOnChange(true);
+    }
+
+    public void startActivity(ITunes aItuneItem){
+        Intent lIntent = new Intent(fPREVIEW_ACTIVTY);
+        lIntent.putExtra(fITUNE_ITEM, aItuneItem);
+        this.startActivity(lIntent);
     }
 
 
