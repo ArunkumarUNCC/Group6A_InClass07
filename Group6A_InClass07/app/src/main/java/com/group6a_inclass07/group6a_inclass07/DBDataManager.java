@@ -3,6 +3,8 @@ package com.group6a_inclass07.group6a_inclass07;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.List;
+
 /**
  * Created by Arunkumar's on 10/19/2015.
  */
@@ -35,5 +37,9 @@ public class DBDataManager {
 
     public boolean deleteNote(ITunes note){
         return this.itunesDAO.delete(note);
+    }
+
+    public List<ITunes> getAllNotes(){
+        return this.itunesDAO.getAll();
     }
 }

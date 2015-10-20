@@ -1,7 +1,11 @@
 package com.group6a_inclass07.group6a_inclass07;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Arunkumar's on 10/19/2015.
@@ -29,5 +33,44 @@ public class ITunesDAO {
     public boolean delete(ITunes note){
         return db.delete(ITunesTable.TABLE_NAME, ITunesTable.COL_ID + "=?", new String[]{note.getAppName() + ""}) > 0;
 
+    }
+
+    public List<ITunes> getAll(){
+        ArrayList<ITunes> list = new ArrayList<ITunes>();
+
+        Cursor cursor = db.query(true, ITunesTable.TABLE_NAME, new String[]{ITunesTable.COL_ID,
+                        ITunesTable.COL_NAME, ITunesTable.COL_DEV, ITunesTable.COL_PRICE},
+                null, null, null, null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()){
+
+            do{
+                ITunes note = buildNoteFromCursor(cursor);
+
+                if(note != null){
+                    list.add(note);
+                }
+            }while(cursor.moveToNext());
+
+            if(!cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+
+        return list;
+    }
+
+    private ITunes buildNoteFromCursor(Cursor cursor){
+        ITunes note = null;
+
+        if (cursor != null){
+            note = new ITunes();
+            note.setAppName(cursor.getString(0));
+            note.setDevName(cursor.getString(1));
+            note.setPrice(cursor.getLong(2));
+        }
+
+
+        return note;
     }
 }
