@@ -39,6 +39,10 @@ public class DBDataManager {
         return this.itunesDAO.delete(note);
     }
 
+    public boolean getNote(String appName){
+        return this.itunesDAO.get(appName);
+    }
+
     public List<ITunes> getAllNotes(){
         return this.itunesDAO.getAll();
     }

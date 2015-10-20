@@ -25,11 +25,16 @@ public class MainActivity extends AppCompatActivity implements GetListAsync.IGet
     ListView fITunesList;
     static FeedsAdapter fFeedsAdapter;
 
+    ArrayList<ITunes> fList;
+    DBDataManager fManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        fList = new ArrayList<ITunes>();
+        fManager = new DBDataManager(this);
         //displaying app icon
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
@@ -62,9 +67,9 @@ public class MainActivity extends AppCompatActivity implements GetListAsync.IGet
     }
 
     @Override
-    public void putList(ArrayList<ITunes> feeds) {
+    public void putList(final ArrayList<ITunes> feeds) {
 //        Log.d("Check ITunes",feeds.toString());
-
+        fList = feeds;
         fFeedsAdapter = new FeedsAdapter(this,R.layout.list_view_row,feeds);
         fITunesList.setAdapter(fFeedsAdapter);
         fFeedsAdapter.setNotifyOnChange(true);
@@ -75,9 +80,20 @@ public class MainActivity extends AppCompatActivity implements GetListAsync.IGet
 
                 ImageView lFavoriteStar = (ImageView) view.findViewById(R.id.imageViewFavoriteStar);
 
-                lFavoriteStar.setImageDrawable(getResources().getDrawable(R.drawable.unfavorite_star));
+                Log.d("Check click", String.valueOf(fManager.getNote(feeds.get((int) id).getAppName())));
 
-                lFavoriteStar.setImageDrawable(getResources().getDrawable(R.drawable.favorite_star));
+                if (fManager.getNote(feeds.get((int) id).getAppName())){
+                    lFavoriteStar.setImageDrawable(getResources().getDrawable(R.drawable.unfavorite_star));
+                    fManager.deleteNote(feeds.get((int) id));
+                }
+                else{
+                    lFavoriteStar.setImageDrawable(getResources().getDrawable(R.drawable.favorite_star));
+                    fManager.saveNote(feeds.get((int) id));
+
+                }
+                //lFavoriteStar.setImageDrawable(getResources().getDrawable(R.drawable.unfavorite_star));
+
+                //lFavoriteStar.setImageDrawable(getResources().getDrawable(R.drawable.favorite_star));
 
                 return false;
             }
@@ -89,7 +105,9 @@ public class MainActivity extends AppCompatActivity implements GetListAsync.IGet
     }
 
     public void showAllOnClick(MenuItem aItem){
-
+        fFeedsAdapter = new FeedsAdapter(this,R.layout.list_view_row,fList);
+        fITunesList.setAdapter(fFeedsAdapter);
+        fFeedsAdapter.setNotifyOnChange(true);
     }
 
 
