@@ -1,16 +1,36 @@
 package com.group6a_inclass07.group6a_inclass07;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class PreviewActivity extends AppCompatActivity {
+
+    ImageView fAppIcon, fFavoriteIcon;
+    TextView fAppTitle;
+    final static String fITUNE_ITEM = "Itune Item";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview);
+
+        //displaying app icon
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.mipmap.inclass07_icon);
+
+        fAppIcon = (ImageView) findViewById(R.id.imageViewAppPreview);
+        fFavoriteIcon = (ImageView) findViewById(R.id.imageViewFavoriteIcon);
+        fAppTitle = (TextView) findViewById(R.id.textViewAppName);
+
+        populateData((ITunes) getIntent().getSerializableExtra(fITUNE_ITEM));
     }
 
     @Override
@@ -33,5 +53,10 @@ public class PreviewActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void populateData(ITunes aItuneItem){
+//        Picasso.with(this).load(String.valueOf(aItuneItem.getAppImage())).into(fAppIcon);
+        fAppTitle.setText(aItuneItem.getAppName());
     }
 }

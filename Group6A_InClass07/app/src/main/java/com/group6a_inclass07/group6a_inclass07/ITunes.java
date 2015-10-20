@@ -1,11 +1,12 @@
 package com.group6a_inclass07.group6a_inclass07;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
  * Created by Arunkumar's on 10/19/2015.
  */
-public class ITunes {
+public class ITunes implements Serializable {
     String[] appImage = new String[2];
     String appName,devName,releaseDate,category;
     double price;
