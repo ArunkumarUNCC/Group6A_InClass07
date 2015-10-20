@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="@string/appName"
         android:id="@+id/textViewAppName"
-        android:textSize="18dp"
+        android:textSize="14dp"
         android:textStyle="bold"
         android:textColor="#000000"
         android:maxLines="1"
@@ -26,8 +26,9 @@
         android:text="@string/devName"
         android:maxLines="1"
         android:paddingLeft="4dp"
+        android:paddingTop="6dp"
         android:id="@+id/textDevName"
-        android:textSize="16dp"
+        android:textSize="12dp"
         android:textColor="#000000"
         android:layout_below="@+id/textViewAppName"
         android:layout_toRightOf="@+id/imageViewIcon"
@@ -38,7 +39,8 @@
         android:layout_height="wrap_content"
         android:text="@string/releaseDate"
         android:id="@+id/textReleaseDate"
-        android:textSize="16dp"
+        android:textSize="12dp"
+        android:paddingTop="6dp"
         android:paddingLeft="4dp"
         android:textColor="#000000"
         android:layout_below="@+id/textDevName"
@@ -48,25 +50,26 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:paddingLeft="8dp"
+        android:textSize="12dp"
+        android:paddingLeft="12dp"
         android:textColor="#000000"
         android:text="@string/price"
         android:id="@+id/textViewPrice"
-        android:layout_above="@+id/textReleaseDate"
+        android:layout_above="@+id/textCategory"
         android:layout_toRightOf="@+id/textDevName"
         android:layout_toEndOf="@+id/textDevName" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:paddingLeft="8dp"
+        android:textSize="12dp"
+        android:paddingLeft="12dp"
+        android:paddingTop="6dp"
         android:textColor="#000000"
         android:text="@string/category"
         android:id="@+id/textCategory"
         android:layout_alignTop="@+id/textReleaseDate"
-        android:layout_toRightOf="@+id/textDevName"
+        android:layout_toRightOf="@+id/textReleaseDate"
         android:layout_toEndOf="@+id/textDevName" />
 
     <ImageView
@@ -79,11 +82,11 @@
         android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:id="@+id/imageViewFavoriteStar"
-        android:src="@android:drawable/ic_menu_close_clear_cancel"
-        android:layout_alignTop="@+id/textViewAppName"
+        android:src="@drawable/unfavorite_star"
+        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

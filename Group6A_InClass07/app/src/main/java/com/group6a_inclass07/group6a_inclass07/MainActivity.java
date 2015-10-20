@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 
 import android.view.View;
@@ -17,7 +19,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements GetListAsync.IGetFeeds{
 
     final String APPSLINKS = "http://itunes.apple.com/us/rss/topgrossingapplications/limit=25/json";
-
     ListView fITunesList;
     static FeedsAdapter fFeedsAdapter;
 
@@ -64,6 +65,24 @@ public class MainActivity extends AppCompatActivity implements GetListAsync.IGet
         fFeedsAdapter = new FeedsAdapter(this,R.layout.list_view_row,feeds);
         fITunesList.setAdapter(fFeedsAdapter);
         fFeedsAdapter.setNotifyOnChange(true);
+
+        fITunesList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+
+                return false;
+            }
+        });
+    }
+
+    public void showFavoritesOnClick(MenuItem aItem){
+
+    }
+
+    public void showAllOnClick(MenuItem aItem){
+
     }
 
 

@@ -2,10 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
 
-    <group android:id="@+id/MenuItems">
-        <item android:id="@+id/show_favorites" android:title="@string/show_favorites"
-
+    <item android:id="@+id/show_favorites" android:title="@string/show_favorites" android:onClick="showFavoritesOnClick"
+    android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/show_all" android:title="@string/show_all" android:onClick="showAllOnClick"
         android:orderInCategory="100" app:showAsAction="never" />
-        <item android:id="@+id/show_all" android:title="@string/show_all"
-            android:orderInCategory="100" app:showAsAction="never" /></group>
 </menu>
