@@ -1,5 +1,6 @@
 package com.group6a_inclass07.group6a_inclass07;
 //Michael Vituli - Arunkumar Bagavathi
+import android.media.Image;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.widget.ListAdapter;
 import android.view.View;
 
 import android.widget.ListView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -70,7 +73,11 @@ public class MainActivity extends AppCompatActivity implements GetListAsync.IGet
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
+                ImageView lFavoriteStar = (ImageView) view.findViewById(R.id.imageViewFavoriteStar);
 
+                lFavoriteStar.setImageDrawable(getResources().getDrawable(R.drawable.unfavorite_star));
+
+                lFavoriteStar.setImageDrawable(getResources().getDrawable(R.drawable.favorite_star));
 
                 return false;
             }
