@@ -37,11 +37,16 @@ public class ITunesDAO {
 
     }
 
+    public boolean deleteAll(){
+        return db.delete(ITunesTable.TABLE_NAME,null,null) > 0;
+
+    }
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public boolean get(String appName){
         ITunes note = null;
 
-        Cursor cursor = db.query(true, ITunesTable.TABLE_NAME, new String[]{ITunesTable.COL_NAME},
+        Cursor cursor = db.query(true, ITunesTable.TABLE_NAME, new String[]{ITunesTable.COL_NAME,ITunesTable.COL_DEV,ITunesTable.COL_PRICE,ITunesTable.COL_CATEGORY,ITunesTable.COL_IMAGE,ITunesTable.COL_DATE},
                 ITunesTable.COL_NAME + "=?", new String[]{appName + ""}, null, null, null, null, null);
 
         if (cursor != null && cursor.moveToFirst()){
@@ -61,7 +66,7 @@ public class ITunesDAO {
         ArrayList<ITunes> list = new ArrayList<ITunes>();
 
         Cursor cursor = db.query(true, ITunesTable.TABLE_NAME, new String[]{
-                        ITunesTable.COL_NAME},
+                        ITunesTable.COL_NAME,ITunesTable.COL_DEV,ITunesTable.COL_PRICE,ITunesTable.COL_CATEGORY,ITunesTable.COL_IMAGE,ITunesTable.COL_DATE},
                 null, null, null, null, null, null);
 
         if (cursor != null && cursor.moveToFirst()){
@@ -88,8 +93,11 @@ public class ITunesDAO {
         if (cursor != null){
             note = new ITunes();
             note.setAppName(cursor.getString(0));
-//            note.setDevName(cursor.getString(1));
-//            note.setPrice(cursor.getLong(2));
+            note.setDevName(cursor.getString(1));
+            note.setPrice(cursor.getLong(2));
+            note.setCategory(cursor.getString(3));
+            note.setAppImage(new String[]{cursor.getString(4), cursor.getString(4)});
+            note.setReleaseDate(cursor.getString(5));
         }
 
 

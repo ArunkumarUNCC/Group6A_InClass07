@@ -22,11 +22,16 @@ public class FeedsAdapter extends ArrayAdapter<ITunes>{
 
     TextView commonTextView;
 
+
+    DBDataManager fManager;
+
     public FeedsAdapter( Context fContext, int resource, List<ITunes> data) {
         super(fContext,resource,data);
         this.data = data;
         this.fContext = fContext;
         this.resource = resource;
+
+        fManager = new DBDataManager(fContext);
     }
 
     @Override
@@ -62,6 +67,17 @@ public class FeedsAdapter extends ArrayAdapter<ITunes>{
         //Setting Image
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageViewIcon);
         Picasso.with(fContext).load(apps.getAppImage()[0]).resize(100,100).into(imageView);
+
+        ImageView lFavoriteStar = (ImageView) convertView.findViewById(R.id.imageViewFavoriteStar);
+        if (fManager.getNote(apps.getAppName())){
+            Picasso.with(fContext).load(R.drawable.unfavorite_star).resize(100, 100).into(lFavoriteStar);
+//            fManager.deleteNote(apps);
+        }
+        else{
+            Picasso.with(fContext).load(R.drawable.favorite_star).resize(100, 100).into(lFavoriteStar);
+//            fManager.saveNote(apps);
+
+        }
 
         return convertView;
     }

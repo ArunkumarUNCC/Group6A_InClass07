@@ -16,6 +16,8 @@ public class PreviewActivity extends AppCompatActivity {
     TextView fAppTitle;
     final static String fITUNE_ITEM = "Itune Item";
 
+    DBDataManager fManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,10 @@ public class PreviewActivity extends AppCompatActivity {
         fFavoriteIcon = (ImageView) findViewById(R.id.imageViewFavoriteIcon);
         fAppTitle = (TextView) findViewById(R.id.textViewAppName);
 
+        fManager = new DBDataManager(this);
+
         populateData((ITunes) getIntent().getSerializableExtra(fITUNE_ITEM));
+
     }
 
     @Override
@@ -56,7 +61,17 @@ public class PreviewActivity extends AppCompatActivity {
     }
 
     public void populateData(ITunes aItuneItem){
-//        Picasso.with(this).load(String.valueOf(aItuneItem.getAppImage())).into(fAppIcon);
+
         fAppTitle.setText(aItuneItem.getAppName());
+        Picasso.with(this).load(aItuneItem.getAppImage()[1]).into(fAppIcon);
+
+        if (fManager.getNote(aItuneItem.getAppName())){
+
+            fFavoriteIcon.setImageDrawable(getResources().getDrawable(R.drawable.favorite_star));
+        }
+        else{
+            fFavoriteIcon.setImageDrawable(getResources().getDrawable(R.drawable.unfavorite_star));
+
+        }
     }
 }
